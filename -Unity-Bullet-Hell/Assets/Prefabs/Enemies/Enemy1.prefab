@@ -86,6 +86,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   theRB: {fileID: 291332757782045671}
   moveSpeed: 1.5
+  damage: 5
+  hitWaitTime: 1
 --- !u!114 &644765217
 MonoBehaviour:
   m_ObjectHideFlags: 0
