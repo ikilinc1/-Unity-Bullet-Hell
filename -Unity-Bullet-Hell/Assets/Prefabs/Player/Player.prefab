@@ -5028,10 +5028,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7405b30de74588458f12741f09f6f7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stats:
+  - speed: 1
+    damage: 5
+    range: 1
+    timeBetweenAttacks: 8
+    amount: 1
+    duration: 7
+  weaponLevel: 0
   rotateSpeed: 180
   holder: {fileID: 898868812}
   fireballToSpawn: {fileID: 3810274954972341751}
   timeBetweenSpawn: 4
+  damager: {fileID: 1013338198}
 --- !u!1 &4701240685431512412
 GameObject:
   m_ObjectHideFlags: 0
