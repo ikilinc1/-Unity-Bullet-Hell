@@ -12,6 +12,7 @@ public class EnemyDamager : MonoBehaviour
     public bool destroyParent;
     public bool damageOverTime;
     public float timeBetweenDamage;
+    public bool destroyOnImpact;
     
     private Vector3 targetSize;
     private float damageCounter;
@@ -73,6 +74,10 @@ public class EnemyDamager : MonoBehaviour
             if (other.CompareTag("Enemy"))
             {
                 other.GetComponent<EnemyController>().TakeDamage(damageAmount, shouldKnockBack);
+                if (destroyOnImpact)
+                {
+                    Destroy(gameObject);
+                }
             }
         }
         else
