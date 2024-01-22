@@ -10,8 +10,12 @@ public class EnemyDamager : MonoBehaviour
     public float growSpeed = 2.5f;
     public bool shouldKnockBack;
     public bool destroyParent;
+    public bool damageOverTime;
+    public float timeBetweenDamage;
     
     private Vector3 targetSize;
+    private float damageCounter;
+    private List<EnemyController> enemiesInRange = new List<EnemyController>();
     
     // Start is called before the first frame update
     void Start()
@@ -39,13 +43,55 @@ public class EnemyDamager : MonoBehaviour
                 }
             }
         }
+
+        if (damageOverTime)
+        {
+            damageCounter -= Time.deltaTime;
+            if (damageCounter <= 0)
+            {
+                damageCounter = timeBetweenDamage;
+                for (int i = 0; i < enemiesInRange.Count; i++)
+                {
+                    if (enemiesInRange[i] != null)
+                    {
+                        enemiesInRange[i].TakeDamage(damageAmount, shouldKnockBack);
+                    }
+                    else
+                    {
+                        enemiesInRange.RemoveAt(i);
+                        i--;
+                    }
+                }
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Enemy"))
+        if (!damageOverTime)
         {
-            other.GetComponent<EnemyController>().TakeDamage(damageAmount, shouldKnockBack);
+            if (other.CompareTag("Enemy"))
+            {
+                other.GetComponent<EnemyController>().TakeDamage(damageAmount, shouldKnockBack);
+            }
+        }
+        else
+        {
+            if (other.CompareTag("Enemy"))
+            {
+                enemiesInRange.Add(other.GetComponent<EnemyController>());
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (damageOverTime)
+        {
+            if (other.CompareTag("Enemy"))
+            {
+                enemiesInRange.Remove(other.GetComponent<EnemyController>());
+            }
         }
     }
 }
