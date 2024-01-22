@@ -11,6 +11,7 @@ public class UIController : MonoBehaviour
     public TMP_Text expLvlText;
     public LevelUpSelectionButton[] levelUpButtons;
     public GameObject levelUpPanel;
+    public TMP_Text coinText;
 
     private void Awake()
     {
@@ -40,5 +41,10 @@ public class UIController : MonoBehaviour
     {
         levelUpPanel.SetActive(false);
         Time.timeScale = 1;
+    }
+
+    public void UpdateCoins()
+    {
+        coinText.text = "Coins: " + CoinController.instance.currentCoins;
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemyController : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class EnemyController : MonoBehaviour
     public float health = 5f;
     public float knockBackTime = 0.5f;
     public int expToGive = 1;
+    public int coinValue = 1;
+    public float coinDropRate = 0.5f;
     
     private Transform target;
     private float hitCounter;
@@ -71,6 +74,11 @@ public class EnemyController : MonoBehaviour
         {
             Destroy(gameObject);
             ExperienceLevelController.instance.SpawnExp(transform.position, expToGive);
+
+            if (Random.value <= coinDropRate)
+            {
+                CoinController.instance.DropCoin(transform.position, coinValue);
+            }
         }
         
         DamageNumberController.instance.SpawnDamage(damageToTake, transform.position);
