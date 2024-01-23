@@ -26825,7 +26825,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cc1cecb8f920774486f32482c60377f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 2
   anim: {fileID: 8404444952237300035}
   pickupRange: 1
   unassignedWeapons:
@@ -26887,6 +26887,7 @@ MonoBehaviour:
   currentHealth: 0
   maxHealth: 100
   healthSlider: {fileID: 7115658842517525370}
+  deathEffect: {fileID: 8983756268717059311, guid: c78de9cd733d35a40b59a0c1c47ce32f, type: 3}
 --- !u!50 &6225123070233857540
 Rigidbody2D:
   serializedVersion: 4
