@@ -11,6 +11,7 @@ public class PlayerHealthController : MonoBehaviour
     public float currentHealth;
     public float maxHealth;
     public Slider healthSlider;
+    public GameObject deathEffect;
     
     private void Awake()
     {
@@ -40,6 +41,8 @@ public class PlayerHealthController : MonoBehaviour
         {
             // Game Over
             gameObject.SetActive(false);
+            LevelManager.instance.EndLevel();
+            Instantiate(deathEffect, transform.position, transform.rotation);
         }
 
         healthSlider.value = currentHealth;
