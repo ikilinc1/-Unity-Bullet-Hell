@@ -316,7 +316,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Werewolf
 
-    Republish'
+    Republishers'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 19384aae844d6444491d11f1b5a42c24, type: 2}
   m_sharedMaterial: {fileID: -4863418641896769028, guid: 19384aae844d6444491d11f1b5a42c24, type: 2}
